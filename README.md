@@ -20,7 +20,8 @@ An elegant, real-time release notes tracker and social sharing helper for Google
   * **Batch Multi-Select Summarizer**: Check multiple updates to activate the floating selection drawer, generating a concise summary tweet under the 280-character limit.
 * **Copy to Clipboard**: Instantly copies a clean, formatted text snippet of any specific update along with its source link to the clipboard.
 * **Export to CSV**: Allows exporting the currently filtered list of updates to a standard CSV file format with one click.
-* **Theme Customization Switcher**: Includes a tri-state header control toggling between **Dark Mode**, **Light Mode**, and high-contrast, accessible **Colorblind-Friendly Mode** (Okabe-Ito friendly coloring), persisting selections via local storage.
+* **Theme Switcher**: Header segment control toggling between **Dark Mode** and **Light Mode**, persisting selections via local storage.
+* **Colorblind & High-Contrast Overlay**: An independent accessibility toggle in the header that overrides primary categories with barrier-free colors (Sky Blue, Dark Blue, Vermillion, Yellow) and enforces solid, high-contrast layouts (pure black for dark mode, pure white for light mode) for optimized readability.
 * **Premium Dark Theme**: Built with CSS variables, featuring glowing borders, micro-animations, glassmorphic UI panels, and custom layouts.
 
 ---

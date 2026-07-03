@@ -36,16 +36,27 @@ document.addEventListener('DOMContentLoaded', () => {
     let currentFilterType = 'all';
     let searchQuery = '';
 
-    // Initialize
+    // Initialize Theme and Accessibility Options
     const themeButtons = document.querySelectorAll('.theme-btn');
+    const btnColorblindToggle = document.getElementById('btn-colorblind-toggle');
+    
+    // Load and Apply Settings
     const savedTheme = localStorage.getItem('theme') || 'dark';
+    const isColorblind = localStorage.getItem('colorblind') === 'true';
+    
     setTheme(savedTheme);
+    setColorblind(isColorblind);
     
     themeButtons.forEach(btn => {
         btn.addEventListener('click', () => {
             const theme = btn.getAttribute('data-theme');
             setTheme(theme);
         });
+    });
+    
+    btnColorblindToggle.addEventListener('click', () => {
+        const active = document.documentElement.getAttribute('data-colorblind') === 'true';
+        setColorblind(!active);
     });
     
     function setTheme(theme) {
@@ -58,6 +69,23 @@ document.addEventListener('DOMContentLoaded', () => {
                 btn.classList.remove('active');
             }
         });
+    }
+    
+    function setColorblind(enable) {
+        const icon = btnColorblindToggle.querySelector('i');
+        if (enable) {
+            document.documentElement.setAttribute('data-colorblind', 'true');
+            localStorage.setItem('colorblind', 'true');
+            btnColorblindToggle.classList.add('active');
+            icon.className = 'fa-solid fa-eye';
+            btnColorblindToggle.title = 'Disable Colorblind & High-Contrast Mode';
+        } else {
+            document.documentElement.removeAttribute('data-colorblind');
+            localStorage.setItem('colorblind', 'false');
+            btnColorblindToggle.classList.remove('active');
+            icon.className = 'fa-solid fa-eye-slash';
+            btnColorblindToggle.title = 'Enable Colorblind & High-Contrast Mode';
+        }
     }
 
     fetchReleaseNotes();

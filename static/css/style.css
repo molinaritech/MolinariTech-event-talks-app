@@ -25,6 +25,18 @@
     --color-issue: #f43f5e;
     --color-general: #6b7280;
     
+    --color-feature-bg: rgba(16, 185, 129, 0.15);
+    --color-change-bg: rgba(59, 130, 246, 0.15);
+    --color-announcement-bg: rgba(168, 85, 247, 0.15);
+    --color-issue-bg: rgba(244, 63, 94, 0.15);
+    --color-general-bg: rgba(107, 114, 128, 0.15);
+
+    --color-feature-border: rgba(16, 185, 129, 0.2);
+    --color-change-border: rgba(59, 130, 246, 0.2);
+    --color-announcement-border: rgba(168, 85, 247, 0.2);
+    --color-issue-border: rgba(244, 63, 94, 0.2);
+    --color-general-border: rgba(107, 114, 128, 0.2);
+    
     --glow-feature: rgba(16, 185, 129, 0.15);
     --glow-change: rgba(59, 130, 246, 0.15);
     --glow-announcement: rgba(168, 85, 247, 0.15);
@@ -45,9 +57,9 @@ html[data-theme="light"] {
     --border-color: rgba(15, 23, 42, 0.08);
     --border-color-active: rgba(2, 132, 199, 0.3);
     
-    --text-main: #0f172a;
-    --text-muted: #64748b;
-    --text-light: #0f172a;
+    --text-main: #0b0f19;
+    --text-muted: #3b4a58;
+    --text-light: #0b0f19;
     
     --primary: #0284c7;
     --primary-glow: rgba(2, 132, 199, 0.15);
@@ -62,6 +74,18 @@ html[data-theme="light"] {
     --color-announcement: #6d28d9;
     --color-issue: #b91c1c;
     --color-general: #475569;
+    
+    --color-feature-bg: rgba(4, 120, 87, 0.08);
+    --color-change-bg: rgba(29, 78, 216, 0.08);
+    --color-announcement-bg: rgba(109, 40, 217, 0.08);
+    --color-issue-bg: rgba(185, 28, 28, 0.08);
+    --color-general-bg: rgba(71, 85, 105, 0.08);
+
+    --color-feature-border: rgba(4, 120, 87, 0.15);
+    --color-change-border: rgba(29, 78, 216, 0.15);
+    --color-announcement-border: rgba(109, 40, 217, 0.15);
+    --color-issue-border: rgba(185, 28, 28, 0.15);
+    --color-general-border: rgba(71, 85, 105, 0.15);
     
     --glow-feature: rgba(4, 120, 87, 0.06);
     --glow-change: rgba(29, 78, 216, 0.06);
@@ -88,36 +112,56 @@ html[data-theme="light"] .theme-btn.active {
     color: #ffffff;
 }
 
-html[data-theme="colorblind"] {
-    --bg-dark: #070a13;
-    --bg-card: rgba(17, 24, 39, 0.7);
-    --bg-card-hover: rgba(31, 41, 55, 0.8);
-    --border-color: rgba(255, 255, 255, 0.08);
-    --border-color-active: rgba(86, 180, 233, 0.4);
+html[data-colorblind="true"] {
+    --color-feature: #56b4e9;
+    --color-change: #0072b2;
+    --color-announcement: #f0e442;
+    --color-issue: #d55e00;
+    --color-general: #999999;
     
-    --text-main: #f3f4f6;
-    --text-muted: #9ca3af;
-    --text-light: #ffffff;
+    --color-feature-bg: rgba(86, 180, 233, 0.15);
+    --color-change-bg: rgba(0, 114, 178, 0.15);
+    --color-announcement-bg: rgba(240, 228, 66, 0.15);
+    --color-issue-bg: rgba(213, 94, 0, 0.15);
+    --color-general-bg: rgba(153, 153, 153, 0.15);
+
+    --color-feature-border: rgba(86, 180, 233, 0.3);
+    --color-change-border: rgba(0, 114, 178, 0.3);
+    --color-announcement-border: rgba(240, 228, 66, 0.3);
+    --color-issue-border: rgba(213, 94, 0, 0.3);
+    --color-general-border: rgba(153, 153, 153, 0.3);
+    
+    --glow-feature: rgba(86, 180, 233, 0.15);
+    --glow-change: rgba(0, 114, 178, 0.15);
+    --glow-announcement: rgba(240, 228, 66, 0.15);
+    --glow-issue: rgba(213, 94, 0, 0.15);
+    --glow-general: rgba(153, 153, 153, 0.15);
     
     --primary: #56b4e9;
     --primary-glow: rgba(86, 180, 233, 0.2);
     --primary-hover: #3ca0d0;
+}
+
+/* High-Contrast Dark Theme Override */
+html[data-theme="dark"][data-colorblind="true"] {
+    --bg-dark: #000000;
+    --bg-card: #121212;
+    --bg-card-hover: #1e1e1e;
+    --border-color: rgba(255, 255, 255, 0.25);
+    --text-main: #ffffff;
+    --text-muted: #e2e8f0;
+}
+
+/* High-Contrast Light Theme Override */
+html[data-theme="light"][data-colorblind="true"] {
+    --bg-dark: #ffffff;
+    --bg-card: #f8fafc;
+    --bg-card-hover: #e2e8f0;
+    --border-color: rgba(15, 23, 42, 0.25);
+    --text-main: #000000;
+    --text-muted: #1e293b;
     
-    --twitter-bg: #e2e8f0;
-    --twitter-color: #0f1419;
-    --twitter-hover-bg: #ffffff;
-    
-    --color-feature: #009e73;
-    --color-change: #0072b2;
-    --color-announcement: #e69f00;
-    --color-issue: #d55e00;
-    --color-general: #999999;
-    
-    --glow-feature: rgba(0, 158, 115, 0.15);
-    --glow-change: rgba(0, 114, 178, 0.15);
-    --glow-announcement: rgba(230, 159, 0, 0.15);
-    --glow-issue: rgba(213, 94, 0, 0.15);
-    --glow-general: rgba(153, 153, 153, 0.15);
+    --primary: #0072b2; /* Darker blue for light theme text contrast */
 }
 
 /* Theme Selector Styling */
@@ -153,6 +197,46 @@ html[data-theme="colorblind"] {
     background: var(--primary);
     color: var(--bg-dark);
     box-shadow: 0 0 10px var(--primary-glow);
+}
+
+/* Accessibility Button */
+.accessibility-btn {
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid var(--border-color);
+    color: var(--text-muted);
+    width: 34px;
+    height: 34px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.95rem;
+    transition: var(--transition-smooth);
+}
+
+.accessibility-btn:hover {
+    color: var(--text-light);
+    background: rgba(255, 255, 255, 0.05);
+}
+
+.accessibility-btn.active {
+    background: var(--primary);
+    color: var(--bg-dark);
+    box-shadow: 0 0 10px var(--primary-glow);
+}
+
+html[data-theme="light"] .accessibility-btn {
+    background: rgba(15, 23, 42, 0.05);
+}
+
+html[data-theme="light"] .accessibility-btn:hover {
+    color: var(--text-main);
+    background: rgba(15, 23, 42, 0.05);
+}
+
+html[data-theme="light"] .accessibility-btn.active {
+    background: var(--primary);
+    color: #ffffff;
 }
 
 /* Reset and Base Styles */
@@ -418,6 +502,11 @@ button {
     transition: var(--transition-smooth);
 }
 
+#search-input::placeholder {
+    color: var(--text-muted);
+    opacity: 0.8;
+}
+
 #search-input:focus {
     background-color: rgba(255, 255, 255, 0.06);
     border-color: var(--primary);
@@ -628,11 +717,11 @@ button {
 .release-card.category-issue::after { background-color: var(--color-issue); }
 .release-card.category-general::after { background-color: var(--color-general); }
 
-.release-card.category-feature:hover { box-shadow: 0 8px 30px var(--glow-feature); border-color: rgba(16, 185, 129, 0.2); }
-.release-card.category-change:hover { box-shadow: 0 8px 30px var(--glow-change); border-color: rgba(59, 130, 246, 0.2); }
-.release-card.category-announcement:hover { box-shadow: 0 8px 30px var(--glow-announcement); border-color: rgba(168, 85, 247, 0.2); }
-.release-card.category-issue:hover { box-shadow: 0 8px 30px var(--glow-issue); border-color: rgba(244, 63, 94, 0.2); }
-.release-card.category-general:hover { box-shadow: 0 8px 30px var(--glow-general); border-color: rgba(107, 114, 128, 0.2); }
+.release-card.category-feature:hover { box-shadow: 0 8px 30px var(--glow-feature); border-color: var(--color-feature-border); }
+.release-card.category-change:hover { box-shadow: 0 8px 30px var(--glow-change); border-color: var(--color-change-border); }
+.release-card.category-announcement:hover { box-shadow: 0 8px 30px var(--glow-announcement); border-color: var(--color-announcement-border); }
+.release-card.category-issue:hover { box-shadow: 0 8px 30px var(--glow-issue); border-color: var(--color-issue-border); }
+.release-card.category-general:hover { box-shadow: 0 8px 30px var(--glow-general); border-color: var(--color-general-border); }
 
 .release-card:hover {
     background-color: var(--bg-card-hover);
@@ -737,11 +826,11 @@ button {
     letter-spacing: 0.5px;
 }
 
-.category-feature .type-badge { background-color: rgba(16, 185, 129, 0.15); color: var(--color-feature); border: 1px solid rgba(16, 185, 129, 0.2); }
-.category-change .type-badge { background-color: rgba(59, 130, 246, 0.15); color: var(--color-change); border: 1px solid rgba(59, 130, 246, 0.2); }
-.category-announcement .type-badge { background-color: rgba(168, 85, 247, 0.15); color: var(--color-announcement); border: 1px solid rgba(168, 85, 247, 0.2); }
-.category-issue .type-badge { background-color: rgba(244, 63, 94, 0.15); color: var(--color-issue); border: 1px solid rgba(244, 63, 94, 0.2); }
-.category-general .type-badge { background-color: rgba(107, 114, 128, 0.15); color: var(--color-general); border: 1px solid rgba(107, 114, 128, 0.2); }
+.category-feature .type-badge { background-color: var(--color-feature-bg); color: var(--color-feature); border: 1px solid var(--color-feature-border); }
+.category-change .type-badge { background-color: var(--color-change-bg); color: var(--color-change); border: 1px solid var(--color-change-border); }
+.category-announcement .type-badge { background-color: var(--color-announcement-bg); color: var(--color-announcement); border: 1px solid var(--color-announcement-border); }
+.category-issue .type-badge { background-color: var(--color-issue-bg); color: var(--color-issue); border: 1px solid var(--color-issue-border); }
+.category-general .type-badge { background-color: var(--color-general-bg); color: var(--color-general); border: 1px solid var(--color-general-border); }
 
 .date-text {
     font-size: 0.85rem;
