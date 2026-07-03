@@ -18,6 +18,8 @@ An elegant, real-time release notes tracker and social sharing helper for Google
 * **X/Twitter Publisher Helper**:
   * **Single-Card Sharing**: Compose a tweet draft for any specific update instantly with the click of a button.
   * **Batch Multi-Select Summarizer**: Check multiple updates to activate the floating selection drawer, generating a concise summary tweet under the 280-character limit.
+* **Copy to Clipboard**: Instantly copies a clean, formatted text snippet of any specific update along with its source link to the clipboard.
+* **Export to CSV**: Allows exporting the currently filtered list of updates to a standard CSV file format with one click.
 * **Premium Dark Theme**: Built with CSS variables, featuring glowing borders, micro-animations, glassmorphic UI panels, and custom layouts.
 
 ---
