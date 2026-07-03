@@ -19,6 +19,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const selectionCount = document.getElementById('selection-count');
     const btnTweetSelected = document.getElementById('btn-tweet-selected');
     const btnClearSelection = document.getElementById('btn-clear-selection');
+    const btnExportCsv = document.getElementById('btn-export-csv');
     
     // Modal Elements
     const tweetModal = document.getElementById('tweet-modal');
@@ -41,6 +42,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // Event Listeners
     btnRefresh.addEventListener('click', fetchReleaseNotes);
     btnRetry.addEventListener('click', fetchReleaseNotes);
+    btnExportCsv.addEventListener('click', exportToCsv);
     
     // Search Handlers
     searchInput.addEventListener('input', (e) => {
@@ -238,6 +240,9 @@ document.addEventListener('DOMContentLoaded', () => {
                             <time class="date-text">${item.date}</time>
                         </div>
                         <div class="card-actions-top">
+                            <button class="btn-card-action btn-copy" title="Copy text to clipboard">
+                                <i class="fa-regular fa-copy"></i>
+                            </button>
                             <button class="btn-card-action btn-single-tweet" title="Tweet this specific update">
                                 <i class="fa-brands fa-x-twitter"></i>
                             </button>
@@ -259,6 +264,12 @@ document.addEventListener('DOMContentLoaded', () => {
             const btnSingleTweet = card.querySelector('.btn-single-tweet');
             btnSingleTweet.addEventListener('click', () => {
                 draftSingleTweet(item);
+            });
+            
+            // Copy Button event
+            const btnCopy = card.querySelector('.btn-copy');
+            btnCopy.addEventListener('click', () => {
+                copyToClipboard(item, btnCopy);
             });
             
             releaseFeed.appendChild(card);
@@ -461,5 +472,75 @@ document.addEventListener('DOMContentLoaded', () => {
         btnRefresh.disabled = false;
         refreshIcon.classList.remove('spinning');
         errorMessage.textContent = msg || 'An error occurred while fetching release notes.';
+    }
+
+    // Copy single update clean text to clipboard
+    function copyToClipboard(item, btnElement) {
+        const cleanContent = getCleanText(item.htmlContent);
+        const copyText = `[${item.type}] BigQuery Update (${item.date}):\n\n${cleanContent}\n\nRead more: ${item.link}`;
+        
+        navigator.clipboard.writeText(copyText).then(() => {
+            const icon = btnElement.querySelector('i');
+            // Visual feedback
+            icon.className = 'fa-solid fa-check';
+            btnElement.style.color = 'var(--color-feature)';
+            
+            setTimeout(() => {
+                icon.className = 'fa-regular fa-copy';
+                btnElement.style.color = '';
+            }, 2000);
+        }).catch(err => {
+            console.error('Failed to copy text: ', err);
+            alert('Could not copy to clipboard. Please try again.');
+        });
+    }
+
+    // Export current filtered updates list to CSV format
+    function exportToCsv() {
+        if (filteredUpdates.length === 0) {
+            alert('No data to export.');
+            return;
+        }
+
+        // CSV Headers
+        const headers = ['Date', 'Type', 'Description', 'Link'];
+        
+        // Helper to format/escape cell value for CSV formatting
+        const escapeCsvValue = (val) => {
+            if (val === null || val === undefined) return '';
+            let formatted = val.toString().replace(/"/g, '""'); // Escape double quotes
+            if (formatted.includes(',') || formatted.includes('\n') || formatted.includes('"')) {
+                formatted = `"${formatted}"`;
+            }
+            return formatted;
+        };
+
+        const rows = filteredUpdates.map(item => [
+            item.date,
+            item.type,
+            getCleanText(item.htmlContent),
+            item.link
+        ]);
+
+        // Build CSV content
+        const csvContent = [
+            headers.join(','),
+            ...rows.map(row => row.map(escapeCsvValue).join(','))
+        ].join('\r\n');
+
+        // Create Blob and Download
+        const blob = new Blob([csvContent], { type: 'text/csv;charset=utf-8;' });
+        const url = URL.createObjectURL(blob);
+        const link = document.createElement('a');
+        
+        // Clean filename string with timestamp
+        const timestamp = new Date().toISOString().slice(0, 10);
+        link.setAttribute('href', url);
+        link.setAttribute('download', `bigquery_releases_${timestamp}.csv`);
+        link.style.visibility = 'hidden';
+        
+        document.body.appendChild(link);
+        link.click();
+        document.body.removeChild(link);
     }
 });
