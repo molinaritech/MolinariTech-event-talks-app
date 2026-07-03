@@ -37,6 +37,124 @@
     --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
+/* Theme overrides */
+html[data-theme="light"] {
+    --bg-dark: #f8fafc;
+    --bg-card: rgba(255, 255, 255, 0.85);
+    --bg-card-hover: rgba(255, 255, 255, 0.95);
+    --border-color: rgba(15, 23, 42, 0.08);
+    --border-color-active: rgba(2, 132, 199, 0.3);
+    
+    --text-main: #0f172a;
+    --text-muted: #64748b;
+    --text-light: #0f172a;
+    
+    --primary: #0284c7;
+    --primary-glow: rgba(2, 132, 199, 0.15);
+    --primary-hover: #0369a1;
+    
+    --twitter-bg: #0f1419;
+    --twitter-color: #ffffff;
+    --twitter-hover-bg: #272c30;
+    
+    --color-feature: #047857;
+    --color-change: #1d4ed8;
+    --color-announcement: #6d28d9;
+    --color-issue: #b91c1c;
+    --color-general: #475569;
+    
+    --glow-feature: rgba(4, 120, 87, 0.06);
+    --glow-change: rgba(29, 78, 216, 0.06);
+    --glow-announcement: rgba(109, 40, 217, 0.06);
+    --glow-issue: rgba(185, 28, 28, 0.06);
+    --glow-general: rgba(71, 85, 105, 0.06);
+}
+
+html[data-theme="light"] .glow-bg {
+    opacity: 0.3;
+}
+
+html[data-theme="light"] .theme-selector {
+    background: rgba(15, 23, 42, 0.05);
+}
+
+html[data-theme="light"] .theme-btn:hover {
+    color: var(--text-main);
+    background: rgba(15, 23, 42, 0.05);
+}
+
+html[data-theme="light"] .theme-btn.active {
+    background: var(--primary);
+    color: #ffffff;
+}
+
+html[data-theme="colorblind"] {
+    --bg-dark: #070a13;
+    --bg-card: rgba(17, 24, 39, 0.7);
+    --bg-card-hover: rgba(31, 41, 55, 0.8);
+    --border-color: rgba(255, 255, 255, 0.08);
+    --border-color-active: rgba(86, 180, 233, 0.4);
+    
+    --text-main: #f3f4f6;
+    --text-muted: #9ca3af;
+    --text-light: #ffffff;
+    
+    --primary: #56b4e9;
+    --primary-glow: rgba(86, 180, 233, 0.2);
+    --primary-hover: #3ca0d0;
+    
+    --twitter-bg: #e2e8f0;
+    --twitter-color: #0f1419;
+    --twitter-hover-bg: #ffffff;
+    
+    --color-feature: #009e73;
+    --color-change: #0072b2;
+    --color-announcement: #e69f00;
+    --color-issue: #d55e00;
+    --color-general: #999999;
+    
+    --glow-feature: rgba(0, 158, 115, 0.15);
+    --glow-change: rgba(0, 114, 178, 0.15);
+    --glow-announcement: rgba(230, 159, 0, 0.15);
+    --glow-issue: rgba(213, 94, 0, 0.15);
+    --glow-general: rgba(153, 153, 153, 0.15);
+}
+
+/* Theme Selector Styling */
+.theme-selector {
+    display: flex;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid var(--border-color);
+    padding: 0.2rem;
+    border-radius: 24px;
+    gap: 0.2rem;
+}
+
+.theme-btn {
+    background: transparent;
+    border: none;
+    color: var(--text-muted);
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.85rem;
+    transition: var(--transition-smooth);
+}
+
+.theme-btn:hover {
+    color: var(--text-light);
+    background: rgba(255, 255, 255, 0.05);
+}
+
+.theme-btn.active {
+    background: var(--primary);
+    color: var(--bg-dark);
+    box-shadow: 0 0 10px var(--primary-glow);
+}
+
 /* Reset and Base Styles */
 * {
     box-sizing: border-box;
